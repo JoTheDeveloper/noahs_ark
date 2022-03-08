@@ -1,4 +1,5 @@
 import 'package:bible_memory_game/utils/themes.dart';
+import 'package:bible_memory_game/widgets/app_background.dart';
 import 'package:bible_memory_game/widgets/main_menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,30 +27,22 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/wood_pallet_background.jpg"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Padding(
-            padding: const EdgeInsets.only(
-              left: 12.0,
-              right: 12.0,
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                color: MainTheme.backgroundBackdropColor,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
+    return AppBackground(
+      Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Padding(
+          padding: const EdgeInsets.only(
+            left: 12.0,
+            right: 12.0,
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              color: MainTheme.backgroundBackdropColor,
+              borderRadius: BorderRadius.all(
+                Radius.circular(5),
               ),
-              child: _buildBody(),
             ),
+            child: _buildBody(),
           ),
         ),
       ),
@@ -104,12 +97,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
         MainMenuButton(
           Key('Old Testament'),
           'Old Testament',
-          () {
-            setState(() {
-              count += 1;
-              visibleMenuItems = Text('ddd');
-            });
-          },
+          () {},
         ),
         MainMenuButton(
           Key('New Testament'),
@@ -130,14 +118,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         menuTitle('Choose your difficulty:'),
-        MainMenuButton(
-          Key('Beginner'),
-          'Beginner',
-          () => setState(() {
-            count += 1;
-            visibleMenuItems = Text('ddd');
-          }),
-        ),
+        MainMenuButton(Key('Beginner'), 'Beginner', () {}),
         MainMenuButton(
           Key('Pro'),
           'Pro',
@@ -157,14 +138,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         menuTitle('Choose your difficulty:'),
-        MainMenuButton(
-          Key('Beginner'),
-          'Beginner',
-          () => setState(() {
-            count += 1;
-            visibleMenuItems = Text('ddd');
-          }),
-        ),
+        MainMenuButton(Key('Beginner'), 'Beginner', () {}),
         MainMenuButton(
           Key('Pro'),
           'Pro',
@@ -184,14 +158,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         menuTitle('Choose your game mode:'),
-        MainMenuButton(
-          Key('Old Testament'),
-          'Old Testament',
-          () => setState(() {
-            count += 1;
-            visibleMenuItems = Text('ddd');
-          }),
-        ),
+        MainMenuButton(Key('Old Testament'), 'Old Testament', () {}),
         MainMenuButton(
           Key('New Testament'),
           'New Testament',
