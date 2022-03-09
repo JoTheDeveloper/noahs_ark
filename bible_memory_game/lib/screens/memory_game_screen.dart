@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../utils/game_utils.dart';
 
-class MemoryGameScreen extends StatefulWidget {
-  const MemoryGameScreen({Key? key}) : super(key: key);
+class MemoryGameScreens extends StatefulWidget {
+  const MemoryGameScreens({Key? key}) : super(key: key);
 
   @override
-  _MemoryGameScreenState createState() => _MemoryGameScreenState();
+  _MemoryGameScreensState createState() => _MemoryGameScreensState();
 }
 
-class _MemoryGameScreenState extends State<MemoryGameScreen> {
+class _MemoryGameScreensState extends State<MemoryGameScreens> {
   //setting text style
   TextStyle whiteText = const TextStyle(color: Colors.white);
   bool hideTest = false;
@@ -44,14 +44,8 @@ class _MemoryGameScreenState extends State<MemoryGameScreen> {
             ],
           ),
           SizedBox(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
+              height: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width,
               child: GridView.builder(
                   itemCount: _game.gameImg!.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -83,18 +77,16 @@ class _MemoryGameScreenState extends State<MemoryGameScreen> {
                             print("false");
 
                             Future.delayed(const Duration(milliseconds: 500),
-                                    () {
-                                  print(_game.gameColors);
-                                  setState(() {
-                                    _game.gameImg![_game.matchCheck[0].keys
-                                        .first] =
-                                        _game.hiddenCardpath;
-                                    _game.gameImg![_game.matchCheck[1].keys
-                                        .first] =
-                                        _game.hiddenCardpath;
-                                    _game.matchCheck.clear();
-                                  });
-                                });
+                                () {
+                              print(_game.gameColors);
+                              setState(() {
+                                _game.gameImg![_game.matchCheck[0].keys.first] =
+                                    _game.hiddenCardpath;
+                                _game.gameImg![_game.matchCheck[1].keys.first] =
+                                    _game.hiddenCardpath;
+                                _game.matchCheck.clear();
+                              });
+                            });
                           }
                         }
                       },
@@ -139,7 +131,7 @@ class _MemoryGameScreenState extends State<MemoryGameScreen> {
             Text(
               info,
               style:
-              const TextStyle(fontSize: 34.0, fontWeight: FontWeight.bold),
+                  const TextStyle(fontSize: 34.0, fontWeight: FontWeight.bold),
             ),
           ],
         ),

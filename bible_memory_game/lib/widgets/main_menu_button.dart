@@ -33,10 +33,11 @@ class _MainMenuButtonState extends State<MainMenuButton> {
           child: Text(
             widget.text,
             style: GoogleFonts.cinzel(
-                textStyle: TextStyle(
-              color: MainTheme.lightTextColor,
-              fontSize: 24,
-            )),
+              textStyle: TextStyle(
+                color: MainTheme.lightTextColor,
+                fontSize: 24,
+              ),
+            ),
           ),
         ),
       ),
