@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../game_play_screen.dart';
 import '../../utils/enums.dart';
-import '../../utils/themes.dart';
 import '../../widgets/colored_indicator.dart';
-import '../../widgets/game_play_heading.dart';
 
 class GuessTheNameGamePlayScreen extends StatefulWidget {
   final GameMode? gameMode;

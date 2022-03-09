@@ -1,10 +1,7 @@
 import 'package:bible_memory_game/widgets/colored_indicator.dart';
-import 'package:bible_memory_game/widgets/game_play_heading.dart';
 import 'package:flutter/material.dart';
-
 import '../game_play_screen.dart';
 import '../../utils/enums.dart';
-import '../../utils/themes.dart';
 
 class GuessTheVerseGamePlayScreen extends StatefulWidget {
   final GameMode? gameMode;

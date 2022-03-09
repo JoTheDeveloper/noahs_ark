@@ -39,6 +39,9 @@ class _FillInTheBlanksScreenState extends State<FillInTheBlanksScreen> {
       ),
       title: 'Fill in the blanks',
       subtitle: widget.gameDifficulty.toString().split('.')[1],
+      filledButtonText: 'Next',
+      transparentButtonText: "Quit",
+      transparentButtonOnTap: () => Navigator.pop(context),
     );
   }
 }

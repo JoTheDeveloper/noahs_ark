@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppBackground extends StatelessWidget {
   final Widget child;
@@ -7,6 +8,7 @@ class AppBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(

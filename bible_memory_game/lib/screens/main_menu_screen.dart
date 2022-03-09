@@ -1,7 +1,6 @@
 import 'package:bible_memory_game/screens/gameplay/fill_in_the_blanks.dart';
 import 'package:bible_memory_game/screens/gameplay/guess_the_name.dart';
 import 'package:bible_memory_game/screens/gameplay/guess_the_verse.dart';
-import 'package:bible_memory_game/screens/memory_game_screen.dart';
 import 'package:bible_memory_game/utils/themes.dart';
 import 'package:bible_memory_game/widgets/app_background.dart';
 import 'package:bible_memory_game/widgets/main_menu_button.dart';

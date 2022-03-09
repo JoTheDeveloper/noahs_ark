@@ -1,9 +1,6 @@
 import 'package:bible_memory_game/utils/enums.dart';
 import 'package:flutter/material.dart';
-
 import '../game_play_screen.dart';
-import '../../utils/themes.dart';
-import '../../widgets/game_play_heading.dart';
 
 class MemoryGameScreen extends StatefulWidget {
   final GameDifficulty? gameDifficulty;
