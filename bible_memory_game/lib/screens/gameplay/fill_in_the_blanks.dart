@@ -1,9 +1,7 @@
+import 'package:bible_memory_game/screens/game_play_screen.dart';
 import 'package:bible_memory_game/utils/enums.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils/themes.dart';
 import '../../widgets/colored_indicator.dart';
-import '../../widgets/game_play_heading.dart';
 
 class FillInTheBlanksScreen extends StatefulWidget {
   final GameDifficulty? gameDifficulty;
@@ -31,31 +29,16 @@ class _FillInTheBlanksScreenState extends State<FillInTheBlanksScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MainTheme.backgroundBackdropColor,
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: GamePlayHeading(
-                title: 'Fill in the blanks',
-                subTitle: widget.gameDifficulty.toString().split('.')[1],
-              ),
-            ),
-            Wrap(
-              children: List.generate(progressMap.keys.length, (index) {
-                return ColoredIndicator(
-                  success: progressMap.values.elementAt(index),
-                );
-              }),
-            ),
-          ],
-        ),
+    return GamePlayScreen(
+      child: Wrap(
+        children: List.generate(progressMap.keys.length, (index) {
+          return ColoredIndicator(
+            success: progressMap.values.elementAt(index),
+          );
+        }),
       ),
+      title: 'Fill in the blanks',
+      subtitle: widget.gameDifficulty.toString().split('.')[1],
     );
   }
 }

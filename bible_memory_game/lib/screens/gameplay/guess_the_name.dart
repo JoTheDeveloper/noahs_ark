@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../game_play_screen.dart';
 import '../../utils/enums.dart';
 import '../../utils/themes.dart';
 import '../../widgets/colored_indicator.dart';
@@ -33,31 +34,16 @@ class _GuessTheNameGamePlayScreenState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MainTheme.backgroundBackdropColor,
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: GamePlayHeading(
-                title: 'Guess The Name',
-                subTitle: widget.gameMode.toString().split('.')[1],
-              ),
-            ),
-            Wrap(
-              children: List.generate(progressMap.keys.length, (index) {
-                return ColoredIndicator(
-                  success: progressMap.values.elementAt(index),
-                );
-              }),
-            ),
-          ],
-        ),
+    return GamePlayScreen(
+      child: Wrap(
+        children: List.generate(progressMap.keys.length, (index) {
+          return ColoredIndicator(
+            success: progressMap.values.elementAt(index),
+          );
+        }),
       ),
+      title: 'Guess the Name',
+      subtitle: widget.gameMode.toString().split('.')[1],
     );
   }
 }
