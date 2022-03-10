@@ -42,13 +42,13 @@ class _MemoryGameScreenState extends State<MemoryGameScreen> {
     int attempts = 0;
     switch (widget.gameDifficulty) {
       case GameDifficulty.Beginner:
-        attempts = 150;
+        attempts = 40;
         break;
       case GameDifficulty.Pro:
-        attempts = 100;
+        attempts = 30;
         break;
       case GameDifficulty.Expert:
-        attempts = 50;
+        attempts = 20;
         break;
       case null:
         break;
@@ -71,8 +71,10 @@ class _MemoryGameScreenState extends State<MemoryGameScreen> {
                 child: Text(
                   'Attempts left: $attempts',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: attempts == 0 ? Colors.red : Colors.white,
                     fontSize: 20,
+                    fontWeight:
+                        attempts == 0 ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
               ),

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/enums.dart';
+import '../widgets/filled_button.dart';
 import '../widgets/gradient_icon.dart';
 import 'gameplay/memory_game.dart';
 
@@ -347,7 +348,35 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => _buildPopUp(
+              'About Us',
+              Container(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Image.asset(
+                        "assets/images/cross_platform_logo.png",
+                      ),
+                    ),
+                    Text(
+                      'We’ve been striving to create a platform where Christians can learn more about the word of God. '
+                      '\n\nNoah’s Ark is one of our learning tools. '
+                      '\n\nIf you would like to help us in our mission, click the link below.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           child: RadiantGradientMask(
             Icon(
               Icons.info,
@@ -357,13 +386,93 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => _buildPopUp(
+              'Settings',
+              Container(
+                height: MediaQuery.of(context).size.height * 0.2,
+                child: Column(
+                  children: [
+                    _buildSettingControl("Music"),
+                    _buildSettingControl("Sound Effects"),
+                    _buildSettingControl("Vibrations"),
+                  ],
+                ),
+              ),
+            ),
+          ),
           child: RadiantGradientMask(
             Icon(
               Icons.settings,
               size: 30,
               color: Colors.white,
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSettingControl(String title) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Switch(
+          value: true,
+          activeColor: MainTheme.darkTextColor,
+          onChanged: (bool value) {
+            // service.enableSetting(site, setting.id, value);
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildPopUp(String title, Widget content) {
+    return AlertDialog(
+      title: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.cinzel(
+          textStyle: TextStyle(
+            color: MainTheme.lightTextColor,
+            fontSize: 24,
+          ),
+        ),
+      ),
+      content: content,
+      backgroundColor: MainTheme.backgroundBackdropColor,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: MainTheme.alertDialogBorderColor,
+          width: 3,
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+      actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 24.0,
+            right: 24.0,
+            bottom: 16.0,
+          ),
+          child: FilledButton(
+            text: 'close',
+            onTap: () => Navigator.pop(context),
           ),
         ),
       ],
