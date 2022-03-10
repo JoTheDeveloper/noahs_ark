@@ -1,4 +1,4 @@
-enum GameMode {
+enum TestamentMode {
   OldTestament,
   NewTestament,
   EntireBible,

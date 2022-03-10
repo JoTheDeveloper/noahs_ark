@@ -31,7 +31,7 @@ class GamePlayHeading extends StatelessWidget {
             subTitle ?? 'Page subtitle',
             style: GoogleFonts.cinzel(
               textStyle: TextStyle(
-                color: MainTheme.lightTextColor,
+                color: Colors.white,
                 fontSize: 16,
               ),
             ),

@@ -21,13 +21,21 @@ class MainMenuScreen extends StatefulWidget {
 class _MainMenuScreenState extends State<MainMenuScreen> {
   Widget visibleMenuItems = Container();
   Widget visibleBottomIcons = Container();
-  int count = 0;
+  int transitionCount = 0;
 
   @override
   void initState() {
     visibleMenuItems = _buildMainMenu();
     visibleBottomIcons = _buildMainMenuBottomIcons();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    visibleMenuItems = Container();
+    visibleBottomIcons = Container();
+    transitionCount = 0;
+    super.dispose();
   }
 
   @override
@@ -62,7 +70,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                       return ScaleTransition(scale: animation, child: child);
                     },
                     child: Container(
-                      key: Key(count.toString()),
+                      key: Key(transitionCount.toString()),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: visibleMenuItems,
@@ -77,7 +85,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                     return ScaleTransition(scale: animation, child: child);
                   },
                   child: Container(
-                    key: Key(count.toString()),
+                    key: Key(transitionCount.toString()),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: visibleBottomIcons,
@@ -101,7 +109,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           Key('Memory Game'),
           'Memory Game',
           () => setState(() {
-            count += 1;
+            transitionCount += 1;
             visibleMenuItems = _buildMemoryGameDifficultyMenu();
             visibleBottomIcons = _buildSubMenuBottomIcons();
           }),
@@ -110,7 +118,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           Key('Fill in the Blanks'),
           'Fill in the Blanks',
           () => setState(() {
-            count += 1;
+            transitionCount += 1;
             visibleMenuItems = _buildFillInBlanksDifficultyMenu();
             visibleBottomIcons = _buildSubMenuBottomIcons();
           }),
@@ -119,7 +127,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           Key('Guess the Verse'),
           'Guess the Verse',
           () => setState(() {
-            count += 1;
+            transitionCount += 1;
             visibleMenuItems = _buildGuessTheVerseGameModes();
             visibleBottomIcons = _buildSubMenuBottomIcons();
           }),
@@ -128,7 +136,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           Key('Guess the Name'),
           'Guess the Name',
           () => setState(() {
-            count += 1;
+            transitionCount += 1;
             visibleMenuItems = _buildGuessTheNameGameModes();
             visibleBottomIcons = _buildSubMenuBottomIcons();
           }),
@@ -160,7 +168,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           () => Navigator.of(context).push(
             MaterialPageRoute(builder: (_) {
               return GuessTheVerseGamePlayScreen(
-                gameMode: GameMode.OldTestament,
+                testamentMode: TestamentMode.OldTestament,
               );
             }),
           ),
@@ -171,7 +179,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           () => Navigator.of(context).push(
             MaterialPageRoute(builder: (_) {
               return GuessTheVerseGamePlayScreen(
-                gameMode: GameMode.NewTestament,
+                testamentMode: TestamentMode.NewTestament,
               );
             }),
           ),
@@ -182,7 +190,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           () => Navigator.of(context).push(
             MaterialPageRoute(builder: (_) {
               return GuessTheVerseGamePlayScreen(
-                gameMode: GameMode.EntireBible,
+                testamentMode: TestamentMode.EntireBible,
               );
             }),
           ),
@@ -202,7 +210,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           () => Navigator.of(context).push(
             MaterialPageRoute(builder: (_) {
               return GuessTheNameGamePlayScreen(
-                gameMode: GameMode.OldTestament,
+                testamentMode: TestamentMode.OldTestament,
               );
             }),
           ),
@@ -213,7 +221,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           () => Navigator.of(context).push(
             MaterialPageRoute(builder: (_) {
               return GuessTheNameGamePlayScreen(
-                gameMode: GameMode.NewTestament,
+                testamentMode: TestamentMode.NewTestament,
               );
             }),
           ),
@@ -224,7 +232,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           () => Navigator.of(context).push(
             MaterialPageRoute(builder: (_) {
               return GuessTheNameGamePlayScreen(
-                gameMode: GameMode.EntireBible,
+                testamentMode: TestamentMode.EntireBible,
               );
             }),
           ),
@@ -320,7 +328,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   Widget _buildSubMenuBottomIcons() {
     return InkWell(
       onTap: () => setState(() {
-        count += 1;
+        transitionCount += 1;
         visibleMenuItems = _buildMainMenu();
         visibleBottomIcons = _buildMainMenuBottomIcons();
       }),

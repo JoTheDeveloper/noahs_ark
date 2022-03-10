@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class MainTheme {
   static Color backgroundBackdropColor = Color(0xff101010);
+  static Color backgroundGameplayBoxColor = Color(0xff202020);
   static Color lightTextColor = Color(0xffFADFAD);
   static Color darkTextColor = Color(0xff7e4e2c);
   static List<Color> mainButtonGradientColors = [
